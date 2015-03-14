@@ -1,0 +1,56 @@
+<h1>Product</h1>
+
+
+<%= form_for :product do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :Description %><br/>
+    <%= f.text_area :description %>
+  </p>
+  
+  <p>
+    <%= f.label :Price %><br>
+    <%= f.text_area :price %>
+  </p>
+  
+  <p>
+    <%= f.label :QTY %><br>
+    <%= f.text_area :stock_quantity %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Qty</th>
+    </tr>
+    <% sumqty = 0 %>
+    <% sumprice = 0 %>
+    <% @products.each do |product| %>
+        <tr>
+            <td><%= product.title %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= product.stock_quantity %></td>
+            <% sumqty += product.stock_quantity.to_f %>
+            <% sumprice += product.price.to_f %>
+        </tr>
+    <% end %>
+    Total Qty: <%= sumqty %>
+    Average Price: <%= sumprice/sumqty %>
+    Size: <%= @products.size %>
+</table>
+
+<% 100.times do %>
+<%= "Chunky Bacon" %><br/>
+<% end %>
